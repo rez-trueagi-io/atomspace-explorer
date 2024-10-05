@@ -1274,6 +1274,17 @@ if (typeof jQuery === 'undefined') {
     this.init('tooltip', element, options)
   }
 
+  Tooltip.prototype.validateContainer = function (container) {
+    if (typeof container === 'string') {
+      var safeContainer = $.find(container);
+      return safeContainer.length ? safeContainer : false;
+    } else if (container instanceof jQuery || container instanceof HTMLElement) {
+      return container;
+    } else {
+      return false; // Default safe value
+    }
+  }
+
   Tooltip.VERSION  = '3.3.5'
 
   Tooltip.TRANSITION_DURATION = 150
@@ -1299,6 +1310,7 @@ if (typeof jQuery === 'undefined') {
     this.type      = type
     this.$element  = $(element)
     this.options   = this.getOptions(options)
+    this.options.container = this.validateContainer(this.options.container)
     this.$viewport = this.options.viewport && $($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
     this.inState   = { click: false, hover: false, focus: false }
 

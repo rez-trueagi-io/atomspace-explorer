@@ -20620,8 +20620,8 @@ $.api.settings = {
   },
 
   regExp  : {
-    required : /\{\$*[A-z0-9]+\}/g,
-    optional : /\{\/\$*[A-z0-9]+\}/g,
+    required : /\{\$*[A-Za-z0-9]+\}/g,
+    optional : /\{\/\$*[A-Za-z0-9]+\}/g,
   },
 
   className: {
@@ -21409,7 +21409,7 @@ $.fn.visibility = function(parameters) {
         $window         = $(window),
 
         $module         = $(this),
-        $context        = $(settings.context),
+        $context        = $.find(settings.context),
 
         $placeholder,
 

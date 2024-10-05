@@ -12537,7 +12537,7 @@ $.fn.progress.settings = {
   },
 
   regExp: {
-    variable: /\{\$*[A-z0-9]+\}/g
+    variable: /\{\$*[A-Za-z0-9]+\}/g
   },
 
   metadata: {

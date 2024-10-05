@@ -10223,7 +10223,7 @@ $.fn.popup = function(parameters) {
 
         $module            = $(this),
         $context           = $(settings.context),
-        $scrollContext     = $(settings.scrollContext),
+        $scrollContext     = $(document).find(settings.scrollContext),
         $boundary          = $(settings.boundary),
         $target            = (settings.target)
           ? $(settings.target)

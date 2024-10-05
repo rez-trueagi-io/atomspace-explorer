@@ -21409,7 +21409,7 @@ $.fn.visibility = function(parameters) {
         $window         = $(window),
 
         $module         = $(this),
-        $context        = $(settings.context),
+        $context        = $.find(settings.context),
 
         $placeholder,
 

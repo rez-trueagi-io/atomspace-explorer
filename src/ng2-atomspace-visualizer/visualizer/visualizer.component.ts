@@ -645,14 +645,40 @@ export class VisualizerComponent implements AfterViewInit, OnInit, OnDestroy, On
     const strUnfiltered = this._translate.instant('Unfiltered');
     const strFilterOnSelection = this._translate.instant('FilterOnSelection');
     $('#filtermenu').empty();
-    $('#filtermenu').append('<div class=\'header\'><i class=\'tags icon\'></i><span>' + strFilterOnSelection +
-      '</span></div><div class=\'divider\'></div>');
-    this.nodeTypes.forEach(type => { $('#filtermenu').append('<div class=\'item\'><span>' + type + '</span></div>'); });
+    const headerDiv = document.createElement('div');
+    headerDiv.className = 'header';
+    const icon = document.createElement('i');
+    icon.className = 'tags icon';
+    const spanFilterOnSelection = document.createElement('span');
+    spanFilterOnSelection.textContent = strFilterOnSelection;
+    headerDiv.appendChild(icon);
+    headerDiv.appendChild(spanFilterOnSelection);
+    $('#filtermenu').append(headerDiv);
     $('#filtermenu').append('<div class=\'divider\'></div>');
-    this.linkTypes.forEach(type => { $('#filtermenu').append('<div class=\'item\'><span>' + type + '</span></div>'); });
-    // $('#filtermenu').append('<div class=\'divider\'></div><div class=\'item\'><span>' +
-    //   '<i class=\'remove icon\' id=\'removeicon\'></i>' + strUnfiltered + '</span></div>');
-    $('#filtermenu').append('<div class=\'divider\'></div><div class=\'item\'><span>' + strUnfiltered + '</span></div>');
+    this.nodeTypes.forEach(type => {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'item';
+      const spanType = document.createElement('span');
+      spanType.textContent = type;
+      itemDiv.appendChild(spanType);
+      $('#filtermenu').append(itemDiv);
+    });
+    $('#filtermenu').append('<div class=\'divider\'></div>');
+    this.linkTypes.forEach(type => {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'item';
+      const spanType = document.createElement('span');
+      spanType.textContent = type;
+      itemDiv.appendChild(spanType);
+      $('#filtermenu').append(itemDiv);
+    });
+    $('#filtermenu').append('<div class=\'divider\'></div>');
+    const unfilteredDiv = document.createElement('div');
+    unfilteredDiv.className = 'item';
+    const spanUnfiltered = document.createElement('span');
+    spanUnfiltered.textContent = strUnfiltered;
+    unfilteredDiv.appendChild(spanUnfiltered);
+    $('#filtermenu').append(unfilteredDiv);
 
     filterMenuInitialized = true;
   }

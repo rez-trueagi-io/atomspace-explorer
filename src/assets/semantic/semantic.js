@@ -16535,7 +16535,7 @@ $.fn.sticky = function(parameters) {
 
         $module               = $(this),
         $window               = $(window),
-        $scroll               = $(settings.scrollContext),
+        $scroll               = $.find(settings.scrollContext),
         $container,
         $context,
 

@@ -1275,8 +1275,9 @@ if (typeof jQuery === 'undefined') {
   }
 
   Tooltip.prototype.validateContainer = function (container) {
-    if (typeof container === 'string' && $(container).length) {
-      return container;
+    if (typeof container === 'string') {
+      var safeContainer = $.find(container);
+      return safeContainer.length ? safeContainer : false;
     } else if (container instanceof jQuery || container instanceof HTMLElement) {
       return container;
     } else {

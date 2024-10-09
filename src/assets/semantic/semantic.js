@@ -10526,7 +10526,7 @@ $.fn.popup = function(parameters) {
         },
 
         hideAll: function() {
-          $(selector.popup)
+          $document.find(selector.popup)
             .filter('.' + className.visible)
             .each(function() {
               $(this)
